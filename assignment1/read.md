@@ -28,7 +28,7 @@ We expect you have a Hadoop VM running as you learned during Micha's class.
 # Results
 
 ### Assignment 1
-![](results/Assignment_1.png)
+![](pdp-assesment1.png)
 
 ### Assignment 1.2
-![](results/Assignment_2.png)
+![](pdp-assesment1-2.png)
