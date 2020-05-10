@@ -3,7 +3,7 @@
 ### Assignment 1.1
 -------------
 
-Located in HD_rating_1.py
+assesment_1_rating_movie.py:
 
 - Count the number of ratings given for each movie 
 - Code have to run on HDFS with a basic setup (Lecture 1 & 2) 
@@ -12,7 +12,8 @@ Located in HD_rating_1.py
 ### Assignment 1.2
 -------------
 
-Additional to assignment 1:
+assesment_1_sort_movies:
+(Additional to assesment 1)
 - Sort the movies by their numbers of ratings
 
 # HOW TO RUN
