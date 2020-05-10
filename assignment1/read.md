@@ -12,7 +12,7 @@ assesment_1_rating_movie.py:
 ### Assignment 1.2
 -------------
 
-assesment_1_sort_movies:
+assesment_1_sort_movies.py:
 (Additional to assesment 1)
 - Sort the movies by their numbers of ratings
 
