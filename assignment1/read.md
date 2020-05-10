@@ -18,8 +18,6 @@ assesment_1_sort_movies:
 
 # HOW TO RUN
 
-We expect you have a Hadoop VM running as you learned during Micha's class.
-
 - SSH in the vm `ssh maria_dev@127.0.0.1 -p 2222`
 - clone this github repo: 'git@github.com:Jobvermeulen/ParallelDistributedProcessing.git`
 - cd into the folder `cd ParallelDistributedProcessing/assignment1`
