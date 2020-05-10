@@ -20,8 +20,6 @@ Additional to assignment 1:
 We expect you have a Hadoop VM running as you learned during Micha's class.
 
 - SSH in the vm `ssh maria_dev@127.0.0.1 -p 2222`
-- Become root `su`
-- Navigate to home directory of root `cd ~`
 - clone this repo git clone `https://gitlab.eugenie.dev/s3.4-ai-bigdata/parallel-distributed-processing-hadoop-fundamentals.git`
 - cd into the folder `cd parallel-distributed-processing-hadoop-fundamentals`
 - execute script for assignment 1: `python HD_rating_1.py u.data`
