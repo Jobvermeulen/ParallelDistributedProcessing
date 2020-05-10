@@ -20,15 +20,15 @@ Additional to assignment 1:
 We expect you have a Hadoop VM running as you learned during Micha's class.
 
 - SSH in the vm `ssh maria_dev@127.0.0.1 -p 2222`
-- clone this repo git clone `https://gitlab.eugenie.dev/s3.4-ai-bigdata/parallel-distributed-processing-hadoop-fundamentals.git`
-- cd into the folder `cd parallel-distributed-processing-hadoop-fundamentals`
-- execute script for assignment 1: `python HD_rating_1.py u.data`
-- execute script for assignment 2: `python HD_rating_2.py u.data`
+- clone this github repo: 'git@github.com:Jobvermeulen/ParallelDistributedProcessing.git`
+- cd into the folder `cd ParallelDistributedProcessing/assignment1`
+- execute script for assignment 1: `python assesment_1_rating_movie.py u.data`
+- execute script for assignment 1.2: `python assesment_1_sort_movies.py u.data`
 
 # Results
 
 ### Assignment 1
 ![](results/Assignment_1.png)
 
-### Assignment 2
+### Assignment 1.2
 ![](results/Assignment_2.png)
