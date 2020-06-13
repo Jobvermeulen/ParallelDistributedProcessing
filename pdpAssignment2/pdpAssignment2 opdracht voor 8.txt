@@ -1,0 +1,47 @@
+-- Assignment for 8
+
+-- First load two different csv files. This can be done with de csvloader.
+-- After loading the csv file, define the columns
+define CSVLoader org.apache.pig.piggybank.storage.CSVLoader();
+gamesCSV = LOAD '/user/maria_dev/assignment2Files/games.csv' USING CSVLoader(',') AS
+  (id: int, 
+  num_turns: int, 
+  num_players: int);
+
+playersCSV = LOAD '/user/maria_dev/assignment2Files/players.csv' USING CSVLoader(',') AS
+  (game_id: int,
+  country: chararray, 
+  won: int, 
+  num_supply_centers: int,
+  eliminated: int, 
+  start_turn: int, 
+  end_turn: int);
+
+-- Combine (Join) two id's from the different csv files
+combinedData = JOIN gamesCSV BY id, playersCSV BY game_id;
+
+-- Filter on players who won a game
+filteredData = FILTER combinedData BY won == 1;
+
+-- Group the filterData on the country
+groupedData = GROUP filteredData BY country;
+
+-- We itterate through the groupepData and replace the 'letters' by country names. We also sum op the turns.
+countedData = FOREACH groupedData GENERATE FLATTEN
+								 ((group == 'A' ? 'America': 
+                				 (group == 'E' ? 'England' :
+                                 (group == 'F' ? 'France' :
+                                 (group == 'G' ? 'Greece' : 
+                                 (group == 'I' ? 'Italy' :
+                                 (group == 'R' ? 'Russia' :
+                                 (group == 'T' ? 'Turkey' : group)))))))) as country,
+                                 SUM(filteredData.num_turns) as num_turns;
+
+-- We order the data by the turns on big to small
+descendingData = ORDER countedData BY num_turns DESC;
+
+-- Make a top 10 selection
+top10Selection = LIMIT descendingData 10;
+
+-- Show the top 10 selection
+DUMP top10Selection;

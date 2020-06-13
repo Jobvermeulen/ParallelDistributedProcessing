@@ -1,0 +1,32 @@
+-- Assignment for a 6
+
+-- First load all the cvs file. This can be done with the buildin csvLoader.
+-- The csv file can be found in user/maria_dev/assignment2Files
+-- After loading the csv file, you need to define all of the columns.
+define CSVLoader org.apache.pig.piggybank.storage.CSVLoader();
+ordersCSV = LOAD '/user/maria_dev/assignment2Files/orders.csv' USING CSVLoader(',') AS
+  (game_id: int, 
+  unit_id: int, 
+  unit_order: chararray, 
+  location: chararray, 
+  target: chararray,
+  target_dest: chararray, 
+  success: int, 
+  reason: chararray, 
+  turn_num: int);
+  
+-- We need to make a smaller selection
+-- We make a smaller selection by filtering the target data to 'Holland' only.
+filteredTargetData = FILTER ordersCSV BY target == 'Holland';
+
+-- Group the data by location 
+groupedResult = GROUP filteredTargetData BY (location);
+
+-- Generate a tuple with the location, the target and a count
+result = FOREACH groupedResult GENERATE FLATTEN(group) as (location), MAX(filteredTargetData.target) as target, COUNT($1);	
+
+-- Sort the result in the alphabetical form
+finalDataSet = ORDER result BY location ASC;
+
+-- Print the finalDataSet
+DUMP finalDataSet;

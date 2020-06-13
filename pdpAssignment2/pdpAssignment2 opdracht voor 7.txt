@@ -1,0 +1,27 @@
+-- assignment for 7
+
+-- Load the csv file with de buildin csvLoader
+-- The csv is located in user/maria_dev/assignment2Files/players.csv
+-- After loading the csv, we need to describe the columns
+define CSVLoader org.apache.pig.piggybank.storage.CSVLoader();
+playersCSV = LOAD '/user/maria_dev/assignment2Files/players.csv' USING CSVLoader(',') AS
+  (game_id: int, 
+  country: chararray,
+  won: int,
+  num_supply_centers: int,
+  eliminated: int, 
+  start_turn: int, 
+  end_turn: int);
+
+-- Filter now the data where a player has won
+-- Won == 1
+filteredPlayerData = FILTER playersCSV BY won == 1;
+
+-- Group the filteredPlayerData by country
+groupedData = GROUP filteredPlayerData BY country;
+
+-- Create a tuple with country, count the wins
+resultData = FOREACH groupedData GENERATE FLATTEN(group) as (country), COUNT($1);	
+
+-- Show the resultData
+DUMP resultData;
